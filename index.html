@@ -12,9 +12,10 @@
   <style>
     /* ─── DESIGN TOKENS ─── */
     :root {
-      --primary:    #006837;   /* Irish flag green */
-      --accent:     #FF7900;   /* Irish flag orange */
-      --accent-dim: #D46500;
+      --primary:    #006837;   /* Irish flag deep green */
+      --accent:     #009A44;   /* Irish flag green — main UI color */
+      --accent-dim: #006837;   /* darker green for hover */
+      --orange:     #FF7900;   /* Irish flag orange — complementary */
       --ink:        #1A1A1A;
       --muted:      #5C6B5E;
       --fog:        #F7F3EE;
@@ -270,7 +271,7 @@
     }
     .tag {
       padding: 0.25rem 0.625rem;
-      background: rgba(255,121,0,0.07); color: var(--accent);
+      background: rgba(0,154,68,0.07); color: var(--accent);
       font-size: 0.75rem; font-weight: 600;
       border-radius: 9999px; letter-spacing: 0.03em;
     }
@@ -306,10 +307,10 @@
       font-size: 0.6875rem; font-weight: 700;
       letter-spacing: 0.04em; text-transform: uppercase;
       border-radius: 9999px; text-decoration: none;
-      background: rgba(255,121,0,0.08); color: var(--accent);
+      background: rgba(0,154,68,0.08); color: var(--accent);
       transition: background 0.15s;
     }
-    .pub-link:hover { background: rgba(255,121,0,0.16); }
+    .pub-link:hover { background: rgba(0,154,68,0.16); }
 
     /* ─── PROJECTS ─── */
     .projects-grid { display: grid; gap: 1.25rem; }
@@ -327,7 +328,7 @@
     }
     .project-icon {
       width: 2.5rem; height: 2.5rem; border-radius: 0.5rem;
-      background: rgba(255,121,0,0.08);
+      background: rgba(0,154,68,0.08);
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem; color: var(--accent); flex-shrink: 0;
     }
@@ -434,7 +435,7 @@
           <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <circle cx="0" cy="0" r="9" fill="white"/>
-          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M-2,8 L-7,50 L7,50 L2,8 Z" fill="white"/>
         </g>
 
         <g id="sm1" transform="translate(-9999,-9999)" opacity="0.78">
@@ -442,7 +443,7 @@
           <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <circle cx="0" cy="0" r="9" fill="white"/>
-          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M-2,8 L-7,50 L7,50 L2,8 Z" fill="white"/>
         </g>
 
         <g id="sm2" transform="translate(-9999,-9999)" opacity="0.6">
@@ -450,7 +451,7 @@
           <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <circle cx="0" cy="0" r="9" fill="white"/>
-          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M-2,8 L-7,50 L7,50 L2,8 Z" fill="white"/>
         </g>
 
         <g id="sm3" transform="translate(-9999,-9999)" opacity="0.44">
@@ -458,7 +459,7 @@
           <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <circle cx="0" cy="0" r="9" fill="white"/>
-          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M-2,8 L-7,50 L7,50 L2,8 Z" fill="white"/>
         </g>
 
         <g id="sm4" transform="translate(-9999,-9999)" opacity="0.3">
@@ -466,7 +467,7 @@
           <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <circle cx="0" cy="0" r="9" fill="white"/>
-          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M-2,8 L-7,50 L7,50 L2,8 Z" fill="white"/>
         </g>
 
         <g id="sm5" transform="translate(-9999,-9999)" opacity="0.18">
@@ -474,7 +475,7 @@
           <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
           <circle cx="0" cy="0" r="9" fill="white"/>
-          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M-2,8 L-7,50 L7,50 L2,8 Z" fill="white"/>
         </g>
 
       </mask>
