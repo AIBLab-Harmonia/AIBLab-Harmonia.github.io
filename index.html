@@ -47,25 +47,6 @@
     @media (min-width: 640px)  { .container { padding: 0 2rem; } }
     @media (min-width: 1024px) { .container { padding: 0 2.5rem; } }
 
-    /* ─── SHAMROCK CURSOR ─── */
-    @media (pointer: fine) {
-      html, body, * { cursor: none !important; }
-
-      #shamrock-cursor {
-        position: fixed;
-        top: 0; left: 0;
-        width: 36px; height: 40px;
-        pointer-events: none;
-        z-index: 99999;
-        will-change: transform;
-        opacity: 0;
-        transition: opacity 0.25s;
-        transform: translate(-18px, -20px);
-      }
-      #shamrock-cursor.visible { opacity: 1; }
-      #shamrock-cursor svg { display: block; }
-    }
-
     /* ─── SKIP LINK ─── */
     .skip-link {
       position: absolute; width: 1px; height: 1px;
@@ -169,7 +150,12 @@
       position: absolute; inset: 0; display: flex; align-items: center;
     }
     .layer-base      { opacity: 0.13; }
-    .layer-highlight { opacity: 0.96; will-change: filter, mask-image; }
+    .layer-highlight {
+      opacity: 0.96;
+      will-change: filter, mask;
+      mask: url(#shamrock-mask);
+      -webkit-mask: url(#shamrock-mask);
+    }
     .dot-grid {
       display: grid; width: 100%; gap: 5px; padding: 1.5rem;
     }
@@ -402,22 +388,6 @@
   </style>
 </head>
 <body>
-  <!-- shamrock cursor (desktop only) -->
-  <div id="shamrock-cursor" aria-hidden="true">
-    <svg width="36" height="40" viewBox="0 0 36 40" xmlns="http://www.w3.org/2000/svg">
-      <!-- top leaf -->
-      <ellipse cx="18" cy="9" rx="8" ry="9" fill="#169B62"/>
-      <!-- bottom-left leaf -->
-      <ellipse cx="9" cy="23" rx="8" ry="9" transform="rotate(-30 9 23)" fill="#169B62"/>
-      <!-- bottom-right leaf -->
-      <ellipse cx="27" cy="23" rx="8" ry="9" transform="rotate(30 27 23)" fill="#169B62"/>
-      <!-- centre overlap -->
-      <circle cx="18" cy="19" r="6" fill="#169B62"/>
-      <!-- stem -->
-      <path d="M18 25 Q15 32 12 39" stroke="#169B62" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-    </svg>
-  </div>
-
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ═══ HEADER ═══ -->
@@ -447,6 +417,58 @@
       </div>
     </div>
   </header>
+
+  <!-- SVG shamrock mask for dot-grid reveal effect -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <mask id="shamrock-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999">
+        <!-- Each <g> is one trail position; JS sets transform="translate(x,y)" -->
+        <!-- Shamrock = 3 circles (leaves) + small centre fill + stem -->
+        <g id="sm0" transform="translate(-9999,-9999)" opacity="1">
+          <circle cx="0"   cy="-28" r="29" fill="white"/>
+          <circle cx="-25" cy=" 14" r="29" fill="white"/>
+          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
+          <circle cx="0"   cy="  0" r="14" fill="white"/>
+          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </g>
+        <g id="sm1" transform="translate(-9999,-9999)" opacity="0.78">
+          <circle cx="0"   cy="-28" r="29" fill="white"/>
+          <circle cx="-25" cy=" 14" r="29" fill="white"/>
+          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
+          <circle cx="0"   cy="  0" r="14" fill="white"/>
+          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </g>
+        <g id="sm2" transform="translate(-9999,-9999)" opacity="0.6">
+          <circle cx="0"   cy="-28" r="29" fill="white"/>
+          <circle cx="-25" cy=" 14" r="29" fill="white"/>
+          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
+          <circle cx="0"   cy="  0" r="14" fill="white"/>
+          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </g>
+        <g id="sm3" transform="translate(-9999,-9999)" opacity="0.44">
+          <circle cx="0"   cy="-28" r="29" fill="white"/>
+          <circle cx="-25" cy=" 14" r="29" fill="white"/>
+          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
+          <circle cx="0"   cy="  0" r="14" fill="white"/>
+          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </g>
+        <g id="sm4" transform="translate(-9999,-9999)" opacity="0.3">
+          <circle cx="0"   cy="-28" r="29" fill="white"/>
+          <circle cx="-25" cy=" 14" r="29" fill="white"/>
+          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
+          <circle cx="0"   cy="  0" r="14" fill="white"/>
+          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </g>
+        <g id="sm5" transform="translate(-9999,-9999)" opacity="0.18">
+          <circle cx="0"   cy="-28" r="29" fill="white"/>
+          <circle cx="-25" cy=" 14" r="29" fill="white"/>
+          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
+          <circle cx="0"   cy="  0" r="14" fill="white"/>
+          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+        </g>
+      </mask>
+    </defs>
+  </svg>
 
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="main-content">
@@ -817,26 +839,22 @@
       fillGrid(baseGrid, DOTS, PRIMARY, ACCENT);
       fillGrid(hlGrid,   DOTS, PRIMARY, ACCENT);
 
-      // Cursor trail: 6 lagged positions, decaying opacity
-      const OPACITIES = [1, 0.78, 0.6, 0.44, 0.3, 0.18];
-      const RADIUS    = 60;
+      // Shamrock-shaped cursor trail via SVG mask
+      // 6 lagged positions with decaying opacity (set on the SVG <g> elements)
+      const smGroups = Array.from({length: 6}, (_, i) => document.getElementById(`sm${i}`));
       let trail = Array.from({length: 6}, () => ({x: -9999, y: -9999}));
       let mx = -9999, my = -9999;
+
+      hlLayer.style.filter =
+        'drop-shadow(0 2px 8px rgba(0,0,0,.20)) ' +
+        'drop-shadow(0 0 8px color-mix(in srgb,#169B62 55%,transparent))';
 
       setInterval(() => {
         trail.pop();
         trail.unshift({x: mx, y: my});
-        const mask = trail.map(({x, y}, i) => {
-          const o = OPACITIES[i];
-          return `radial-gradient(circle ${RADIUS}px at ${x}px ${y}px,rgba(0,0,0,${o}) 0%,rgba(0,0,0,${o}) 45%,transparent 100%)`;
-        }).join(',');
-        hlLayer.style.webkitMaskImage    = mask;
-        hlLayer.style.maskImage          = mask;
-        hlLayer.style.webkitMaskComposite = 'source-over';
-        hlLayer.style.maskComposite      = 'add';
-        hlLayer.style.filter =
-          'drop-shadow(0 2px 8px rgba(0,0,0,.20)) ' +
-          'drop-shadow(0 0 8px color-mix(in srgb,#169B62 55%,transparent))';
+        trail.forEach(({x, y}, i) => {
+          smGroups[i].setAttribute('transform', `translate(${x},${y})`);
+        });
       }, 45);
 
       window.addEventListener('pointermove', e => {
@@ -892,24 +910,6 @@
       sections.forEach(s => io.observe(s));
     }
 
-    // Shamrock cursor (desktop only)
-    function initShamrockCursor() {
-      if (!window.matchMedia('(pointer: fine)').matches) return;
-      const el = document.getElementById('shamrock-cursor');
-      if (!el) return;
-
-      let raf;
-      document.addEventListener('mousemove', e => {
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          el.style.transform = `translate(${e.clientX - 18}px, ${e.clientY - 20}px)`;
-          el.classList.add('visible');
-        });
-      }, {passive: true});
-
-      document.addEventListener('mouseleave', () => el.classList.remove('visible'));
-    }
-
     // Mobile hamburger menu
     function initMobileNav() {
       const btn     = document.getElementById('hamburger');
@@ -933,7 +933,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      initShamrockCursor();
       initHero();
       initContactGrid();
       initScrollNav();
