@@ -431,8 +431,13 @@
   <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
     <defs>
       <!-- blur gives soft fade-out at leaf edges, crisp centre -->
-      <filter id="shamrock-blur" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+      <!-- blurred copy behind + solid original on top = crisp inside, soft fade outside -->
+      <filter id="shamrock-blur" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blurred"/>
+        <feMerge>
+          <feMergeNode in="blurred"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
       </filter>
 
       <mask id="shamrock-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999">
