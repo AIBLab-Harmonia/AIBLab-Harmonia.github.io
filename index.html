@@ -12,14 +12,14 @@
   <style>
     /* ─── DESIGN TOKENS ─── */
     :root {
-      --primary:    #1B5E3B;
-      --accent:     #169B62;
-      --accent-dim: #0E7A4C;
-      --ink:        #0A2416;
-      --muted:      #52796F;
-      --fog:        #EEF5F1;
-      --fog-light:  #F5FAF7;
-      --line:       #C8DDD4;
+      --primary:    #006837;   /* Irish flag green */
+      --accent:     #FF7900;   /* Irish flag orange */
+      --accent-dim: #D46500;
+      --ink:        #1A1A1A;
+      --muted:      #5C6B5E;
+      --fog:        #F7F3EE;
+      --fog-light:  #FAFAF7;
+      --line:       #DDD8CE;
       --white:      #ffffff;
 
       --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
@@ -270,7 +270,7 @@
     }
     .tag {
       padding: 0.25rem 0.625rem;
-      background: rgba(22,155,98,0.07); color: var(--accent);
+      background: rgba(255,121,0,0.07); color: var(--accent);
       font-size: 0.75rem; font-weight: 600;
       border-radius: 9999px; letter-spacing: 0.03em;
     }
@@ -306,10 +306,10 @@
       font-size: 0.6875rem; font-weight: 700;
       letter-spacing: 0.04em; text-transform: uppercase;
       border-radius: 9999px; text-decoration: none;
-      background: rgba(22,155,98,0.08); color: var(--accent);
+      background: rgba(255,121,0,0.08); color: var(--accent);
       transition: background 0.15s;
     }
-    .pub-link:hover { background: rgba(22,155,98,0.16); }
+    .pub-link:hover { background: rgba(255,121,0,0.16); }
 
     /* ─── PROJECTS ─── */
     .projects-grid { display: grid; gap: 1.25rem; }
@@ -327,7 +327,7 @@
     }
     .project-icon {
       width: 2.5rem; height: 2.5rem; border-radius: 0.5rem;
-      background: rgba(22,155,98,0.08);
+      background: rgba(255,121,0,0.08);
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem; color: var(--accent); flex-shrink: 0;
     }
@@ -418,54 +418,65 @@
     </div>
   </header>
 
-  <!-- SVG shamrock mask for dot-grid reveal effect -->
+  <!-- SVG shamrock mask: three heart-shaped leaves, tip of each heart at centre -->
+  <!--
+    Heart leaf path (tip at origin, leaf extends outward):
+    M 0,0  C -12,-8 -24,-16 -24,-28  C -24,-44 -8,-48 0,-36  C 8,-48 24,-44 24,-28  C 24,-16 12,-8 0,0 Z
+    Leaf 2 = same path rotate(120), Leaf 3 = rotate(240)
+    JS updates each <g> transform="translate(cursorX, cursorY)"
+  -->
   <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
     <defs>
       <mask id="shamrock-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="9999" height="9999">
-        <!-- Each <g> is one trail position; JS sets transform="translate(x,y)" -->
-        <!-- Shamrock = 3 circles (leaves) + small centre fill + stem -->
+
         <g id="sm0" transform="translate(-9999,-9999)" opacity="1">
-          <circle cx="0"   cy="-28" r="29" fill="white"/>
-          <circle cx="-25" cy=" 14" r="29" fill="white"/>
-          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
-          <circle cx="0"   cy="  0" r="14" fill="white"/>
-          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <circle cx="0" cy="0" r="9" fill="white"/>
+          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
         </g>
+
         <g id="sm1" transform="translate(-9999,-9999)" opacity="0.78">
-          <circle cx="0"   cy="-28" r="29" fill="white"/>
-          <circle cx="-25" cy=" 14" r="29" fill="white"/>
-          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
-          <circle cx="0"   cy="  0" r="14" fill="white"/>
-          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <circle cx="0" cy="0" r="9" fill="white"/>
+          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
         </g>
+
         <g id="sm2" transform="translate(-9999,-9999)" opacity="0.6">
-          <circle cx="0"   cy="-28" r="29" fill="white"/>
-          <circle cx="-25" cy=" 14" r="29" fill="white"/>
-          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
-          <circle cx="0"   cy="  0" r="14" fill="white"/>
-          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <circle cx="0" cy="0" r="9" fill="white"/>
+          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
         </g>
+
         <g id="sm3" transform="translate(-9999,-9999)" opacity="0.44">
-          <circle cx="0"   cy="-28" r="29" fill="white"/>
-          <circle cx="-25" cy=" 14" r="29" fill="white"/>
-          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
-          <circle cx="0"   cy="  0" r="14" fill="white"/>
-          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <circle cx="0" cy="0" r="9" fill="white"/>
+          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
         </g>
+
         <g id="sm4" transform="translate(-9999,-9999)" opacity="0.3">
-          <circle cx="0"   cy="-28" r="29" fill="white"/>
-          <circle cx="-25" cy=" 14" r="29" fill="white"/>
-          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
-          <circle cx="0"   cy="  0" r="14" fill="white"/>
-          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <circle cx="0" cy="0" r="9" fill="white"/>
+          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
         </g>
+
         <g id="sm5" transform="translate(-9999,-9999)" opacity="0.18">
-          <circle cx="0"   cy="-28" r="29" fill="white"/>
-          <circle cx="-25" cy=" 14" r="29" fill="white"/>
-          <circle cx=" 25" cy=" 14" r="29" fill="white"/>
-          <circle cx="0"   cy="  0" r="14" fill="white"/>
-          <path d="M0 18 Q-6 42 -12 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(120)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <path transform="rotate(240)" d="M0,0 C-12,-8 -24,-16 -24,-28 C-24,-44 -8,-48 0,-36 C8,-48 24,-44 24,-28 C24,-16 12,-8 0,0Z" fill="white"/>
+          <circle cx="0" cy="0" r="9" fill="white"/>
+          <path d="M0,2 Q-6,22 -12,42" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
         </g>
+
       </mask>
     </defs>
   </svg>
@@ -824,8 +835,8 @@
     function initHero() {
       const COLS = 80, ROWS = 30;
       const DOTS = makeDots(COLS * ROWS, 7919);
-      const PRIMARY = 'color-mix(in srgb, #1B5E3B 92%, white)';
-      const ACCENT  = 'color-mix(in srgb, #169B62 80%, white)';
+      const PRIMARY = 'color-mix(in srgb, #006837 92%, white)';  /* Irish green dots */
+      const ACCENT  = 'color-mix(in srgb, #FF7900 80%, white)';  /* Irish orange dots */
 
       const baseGrid   = document.getElementById('hero-base-grid');
       const hlGrid     = document.getElementById('hero-highlight-grid');
@@ -847,7 +858,7 @@
 
       hlLayer.style.filter =
         'drop-shadow(0 2px 8px rgba(0,0,0,.20)) ' +
-        'drop-shadow(0 0 8px color-mix(in srgb,#169B62 55%,transparent))';
+        'drop-shadow(0 0 8px color-mix(in srgb,#009A44 55%,transparent))';
 
       setInterval(() => {
         trail.pop();
