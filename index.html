@@ -828,8 +828,8 @@
       const rand = makePRNG(seed);
       return Array.from({length: count}, () => {
         const r = rand();
-        if (r < 0.05) return 'accent';
-        if (r < 0.55) return 'primary';
+        if (r < 0.25) return 'accent';
+        if (r < 0.65) return 'primary';
         return 'empty';
       });
     }
